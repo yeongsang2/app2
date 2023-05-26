@@ -17,7 +17,7 @@ def read_root():
 @app.post("/clothes-type")
 async def detect_clothes_return_json_result(file: bytes = File(...)):
     
-    full_model = keras.models.load_model('/Users/kim-yeongsang/Desktop/app2/model')
+    full_model = keras.models.load_model('/user/app/model')
 
     img =Image.open(io.BytesIO(file)).convert("RGB")
     img = img.resize((224, 224)) 
