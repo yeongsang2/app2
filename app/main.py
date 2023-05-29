@@ -27,7 +27,6 @@ async def detect_clothes_return_json_result(file: bytes = File(...)):
     x = preprocess_input(x)
 
     c=full_model.predict(x)
-    classes = ['Blazer', 'Blouse', 'Cardigan', 'Dress', 'Jacket', 'Jeans', 'Jumpsuit', 'Romper', 'Shorts', 'Skirts', 'Sweater', 'Sweatpants', 'Tank', 'Tee', 'Top']
-
+    classes = ['자켓','반바지', '치마', '긴바지', '티셔츠']
     Predicted_Class=np.argmax(c, axis = 1)
     return { 'type' : classes[int(Predicted_Class)]}
