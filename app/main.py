@@ -15,7 +15,7 @@ def read_root():
     return {"ping"}
 
 @app.post("/clothes-type")
-async def detect_clothes_return_json_result(file: bytes = File(...)):
+async def detect_clothes_retusrn_json_result(file: bytes = File(...)):
     
     full_model = keras.models.load_model('/user/app/model')
 
@@ -27,6 +27,6 @@ async def detect_clothes_return_json_result(file: bytes = File(...)):
     x = preprocess_input(x)
 
     c=full_model.predict(x)
-    classes = ['자켓','반바지', '치마', '긴바지', '티셔츠']
+    classes = ['긴팔','긴바지','반팔','반바지']
     Predicted_Class=np.argmax(c, axis = 1)
     return { 'type' : classes[int(Predicted_Class)]}
